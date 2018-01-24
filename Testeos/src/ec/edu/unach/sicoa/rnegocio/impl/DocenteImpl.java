@@ -123,11 +123,9 @@ public class DocenteImpl implements IDocente{
                 docente.setDireccion(resultado.getString(6));
                 docente.setCategoria(resultado.getString(7));
                 docente.setSexo(resultado.getString(8));
-                docente.setFechaNacimiento(resultado.getDate(5));
-                docente.setFechaIngreso(resultado.getDate(6));
-                docente.setTelefono(resultado.getString(7));
-                docente.setSexo(resultado.getString(8));
-                
+                docente.setFechaNacimiento(resultado.getDate(9));
+                docente.setFechaIngreso(resultado.getDate(10));
+                docente.setSalario(resultado.getDouble(11));
             }
         } catch (Exception e) {
             throw e;
@@ -149,20 +147,18 @@ public class DocenteImpl implements IDocente{
             ResultSet resultado = conec.ejecutarQuery(sql, null);
             Docente docente=null;
             while (resultado.next()) {
-//                docente = new Docente();
-//                docente.setCodigo(resultado.getInt(1));
-//                docente.setCedula(resultado.getString(2));
-//                docente.setNombres(resultado.getString(3));
-//                docente.setApellidos(resultado.getString(4));
-//                docente.setFechaNacimiento(resultado.getDate(5));
-//                docente.setFechaInreso(resultado.getDate(6));
-//                docente.setTelefono(resultado.getString(7));
-//                docente.setSexo(resultado.getString(8));
-//                docente.setDireccion(resultado.getString(9));
-//                //docente.setDireccion(resultado.getObject(9)!=null? resultado.getString(9):null);
-//                ICurso cursodao=new CursoImpl();
-//                Curso curso=cursodao.obtener(resultado.getInt(10));
-//                docente.setCurso(curso);
+                docente = new Docente();
+                docente.setCodigo(resultado.getInt(1));
+                docente.setCedula(resultado.getString(2));
+                docente.setNombres(resultado.getString(3));
+                docente.setApellidos(resultado.getString(4));
+                docente.setTelefono(resultado.getString(5));
+                docente.setDireccion(resultado.getString(6));
+                docente.setCategoria(resultado.getString(7));
+                docente.setSexo(resultado.getString(8));
+                docente.setFechaNacimiento(resultado.getDate(9));
+                docente.setFechaIngreso(resultado.getDate(10));
+                docente.setSalario(resultado.getDouble(11));
                 lista.add(docente);
             }
         } catch (Exception e) {
