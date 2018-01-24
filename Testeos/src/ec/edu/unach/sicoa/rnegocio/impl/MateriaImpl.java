@@ -12,7 +12,7 @@ public class MateriaImpl implements IMateria{
     @Override
     public int insertar(Materia materia) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "INSERT INTO Materia(codigo, nombre) VALUES (?, ?)";
+        String sql = "INSERT INTO Materia(Cod_Materia, Nombre) VALUES (?, ?)";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, materia.getCodigo()));
         listParametro.add(new Parametro(2, materia.getNombre()));
@@ -33,7 +33,7 @@ public class MateriaImpl implements IMateria{
     @Override
     public int modificar(Materia materia) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE Materia SET codigo=?, nombre=? WHERE codigo=?";
+        String sql = "UPDATE Materia SET Cod_Materia=?, Nombre=? WHERE Cod_Materia=?";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, materia.getCodigo()));
         listParametro.add(new Parametro(2, materia.getNombre()));
@@ -54,7 +54,7 @@ public class MateriaImpl implements IMateria{
     @Override
     public int eliminar(Materia materia) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "DELETE FROM Materia WHERE codigo=?";
+        String sql = "DELETE FROM Materia WHERE Cod_Materia=?";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, materia.getCodigo()));
         Conexion conec = null;
@@ -74,7 +74,7 @@ public class MateriaImpl implements IMateria{
     @Override
     public Materia obtener(int codigo) throws Exception {
         Materia materia = null;
-        String sql = "SELECT codigo, nombre FROM Materia where codigo = ?";
+        String sql = "SELECT Cod_Materia, Nombre FROM Materia where Cod_Materia = ?";
         ArrayList<Parametro> listadoParametros = new ArrayList<>();
         listadoParametros.add(new Parametro(1, codigo));
         Conexion conec = null;
@@ -99,7 +99,7 @@ public class MateriaImpl implements IMateria{
     @Override
     public ArrayList<Materia> obtener() throws Exception {
         ArrayList<Materia> lista = new ArrayList<>();
-        String sql = "SELECT codigo, nombre FROM Materia";
+        String sql = "SELECT Cod_Materia, Nombre FROM Materia";
         Conexion conec = null;
         try {
             conec = new Conexion();
