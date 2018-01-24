@@ -79,6 +79,7 @@ public class MATERIAV extends JInternalFrame {
 
             Materia materia = new Materia();
             materia.setCodigo(Integer.parseInt(txtTitulo1.getText()));
+            materia.setNombre(txtTitulo2.getText());
             IMateria maDao = new MateriaImpl();
             if (maDao.insertar(materia) > 0) {
 
