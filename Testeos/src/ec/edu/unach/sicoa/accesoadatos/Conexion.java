@@ -8,7 +8,7 @@ public class Conexion {
 
     Scanner entrada = new Scanner(System.in);
     String driver = "org.postgresql.Driver";
-    String url = "jdbc:postgresql://192.168.0.154:5434/Academico";
+    String url = "jdbc:postgresql://localhost:5434/Academico";
     String usuario = "jhon";
     String conraseña = "jhon1";
     Connection conexion = null;
