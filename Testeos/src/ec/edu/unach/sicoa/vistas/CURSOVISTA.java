@@ -5,6 +5,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import ec.edu.unach.sicoa.rnegocio.dao.*;
+import ec.edu.unach.sicoa.rnegocio.impl.*;
+import ec.edu.unach.sicoa.rnegocio.entidades.*;
 
 public class CURSOVISTA extends JInternalFrame {
 
@@ -69,7 +72,19 @@ public class CURSOVISTA extends JInternalFrame {
     }
 
     public void btnAceptarActionListener(ActionEvent e) {
-        JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
+        try {
+            Curso curso = new Curso();
+            curso.setCodigo(Integer.parseInt(txtTitulo1.getText()));
+            curso.setDescripcion(txtTitulo2.getText());
+            ICurso cursoDao = new CursoImpl();
+            if (cursoDao.insertar(curso) > 0) {
+                JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }
 
 }
