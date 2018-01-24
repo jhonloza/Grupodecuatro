@@ -63,6 +63,7 @@ public class CURSOVISTA extends JInternalFrame {
         this.add(titulo0, BorderLayout.NORTH);
         this.add(pnlcentral, BorderLayout.CENTER);
         this.add(pnlpie, BorderLayout.SOUTH);
+        this.setClosable(true);
     }
 
     public static void main(String[] args) {
