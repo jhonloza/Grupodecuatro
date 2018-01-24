@@ -13,7 +13,7 @@ public class EstudianteImpl implements IEstudiante{
     @Override
     public int insertar(Estudiante estudiante) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "INSERT INTO Estudiante(codigo, cedula, nombres, apellidos, fecha_nac, fecha_ingreso, telefono, sexo, direccion, curso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Estudiante(Cod_estudiante, Cedula, Nombre, Apellido, Fecha_nacimiento, Fecha_ingreso, Telefono, Sexo, Direccion, cod_c) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, estudiante.getCodigo()));
         listParametro.add(new Parametro(2, estudiante.getCedula()));
@@ -32,7 +32,7 @@ public class EstudianteImpl implements IEstudiante{
         listParametro.add(new Parametro(7, estudiante.getTelefono()));
         listParametro.add(new Parametro(8, estudiante.getSexo()));
         listParametro.add(new Parametro(9, estudiante.getDireccion()!=null?estudiante.getDireccion():null));
-        listParametro.add(new Parametro(10, estudiante.getCurso()));
+        listParametro.add(new Parametro(10, estudiante.getCurso().getCodigo()));
         Conexion conec = null;
         try {
             conec = new Conexion();
@@ -50,7 +50,7 @@ public class EstudianteImpl implements IEstudiante{
     @Override
     public int modificar(Estudiante estudiante) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE estudiante SET codigo=?, cedula=?, nombres=?, apellidos=?, fecha_nac=?, fecha_ingreso=?, telefono=?, sexo=?, direccion=?, curso=? WHERE codigo=?";
+        String sql = "UPDATE Estudiante SET Cod_estudiante=?, Cedula=?, Nombre=?, Apellido=?, Fecha_nacimiento=?, Fecha_ingreso=?, Telefono=?, Sexo=?, Direccion=?, cod_c=? WHERE Cod_estudiante=?";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, estudiante.getCodigo()));
         listParametro.add(new Parametro(2, estudiante.getCedula()));
@@ -69,7 +69,7 @@ public class EstudianteImpl implements IEstudiante{
         listParametro.add(new Parametro(7, estudiante.getTelefono()));
         listParametro.add(new Parametro(8, estudiante.getSexo()));
         listParametro.add(new Parametro(9, estudiante.getDireccion()));
-        listParametro.add(new Parametro(10, estudiante.getCurso()));
+        listParametro.add(new Parametro(10, estudiante.getCurso().getCodigo()));
         listParametro.add(new Parametro(11, estudiante.getCodigo()));
         Conexion conec=null;
         try {
@@ -88,7 +88,7 @@ public class EstudianteImpl implements IEstudiante{
     @Override
     public int eliminar(Estudiante estudiante) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "DELETE FROM estudiante WHERE codigo=?";
+        String sql = "DELETE FROM Estudiante WHERE codigo=?";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, estudiante.getCodigo()));
         Conexion conec = null;
@@ -108,7 +108,7 @@ public class EstudianteImpl implements IEstudiante{
     @Override
     public Estudiante obtener(int codigo) throws Exception {
         Estudiante estudiante = null;
-        String sql = "SELECT codigo, cedula, nombres, apellidos, fecha_nac, fecha_ingreso, telefono, sexo, direccion, curso FROM estudiante where codigo = ?";
+        String sql = "SELECT Cod_estudiante, Cedula, Nombre, Apellido, Fecha_nacimiento, Fecha_ingreso, Telefono, Sexo, Direccion, cod_c FROM Estudiante where Cod_estudiante = ?";
         ArrayList<Parametro> listadoParametros = new ArrayList<>();
         listadoParametros.add(new Parametro(1, codigo));
         Conexion conec = null;
@@ -144,7 +144,7 @@ public class EstudianteImpl implements IEstudiante{
     @Override
     public ArrayList<Estudiante> obtener() throws Exception {
         ArrayList<Estudiante> lista = new ArrayList<>();
-        String sql = "SELECT codigo, cedula, nombres, apellidos, fecha_nac, fecha_ingreso, telefono, sexo, direccion, curso FROM estudiante";
+        String sql = "SELECT Cod_estudiante, Cedula, Nombre, Apellido, Fecha_nacimiento, Fecha_ingreso, Telefono, Sexo, Direccion, cod_c FROM Estudiante";
         Conexion conec = null;
         try {
             conec = new Conexion();
