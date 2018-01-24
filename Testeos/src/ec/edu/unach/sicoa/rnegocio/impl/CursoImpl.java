@@ -11,7 +11,7 @@ public class CursoImpl implements ICurso {
     @Override
     public int insertar(Curso curso) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "insert into Curso (codigo, descripcion) values (?,?)";
+        String sql = "insert into \"Curso\" (codigo, descripcion) values (?,?)";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, curso.getCodigo()));
         listParametro.add(new Parametro(2, curso.getDescripcion()!=null?curso.getDescripcion():null));
@@ -32,7 +32,7 @@ public class CursoImpl implements ICurso {
     @Override
     public int modificar(Curso curso) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE Curso SET codigo=?, descripcion=? WHERE codigo=?";
+        String sql = "UPDATE \"Curso\" SET codigo=?, descripcion=? WHERE codigo=?";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, curso.getCodigo()));
         listParametro.add(new Parametro(2, curso.getDescripcion()));
@@ -53,7 +53,7 @@ public class CursoImpl implements ICurso {
     @Override
     public int eliminar(Curso curso) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "DELETE FROM Curso WHERE codigo=?";
+        String sql = "DELETE FROM \"Curso\" WHERE codigo=?";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, curso.getCodigo()));
         Conexion conec = null;
@@ -73,7 +73,7 @@ public class CursoImpl implements ICurso {
     @Override
     public Curso obtener(int codigo) throws Exception {
         Curso curso = null;
-        String sql = "SELECT codigo, descripcion FROM Curso where codigo=?";
+        String sql = "SELECT codigo, descripcion FROM \"Curso\" where codigo=?";
         ArrayList<Parametro> listadoParametros = new ArrayList<>();
         listadoParametros.add(new Parametro(1, codigo));
         Conexion conec = null;
