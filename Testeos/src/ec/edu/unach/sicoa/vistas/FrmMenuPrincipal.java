@@ -16,6 +16,13 @@ public class FrmMenuPrincipal extends JFrame{
     JMenuItem eliminarEstudiante;
     JMenuItem buscarEstudiante;
     JMenuItem listEstudiante;
+    
+     JMenu mniCurso;
+    JMenuItem mniNuevoCurso;
+    JMenuItem mniModificarCurso;
+    JMenuItem mniEliminarCurso;
+    JMenuItem mniBuscarCurso;
+    JMenuItem mniListaCurso;
     JDesktopPane escritorio;
 
     public FrmMenuPrincipal() {
@@ -54,12 +61,34 @@ public class FrmMenuPrincipal extends JFrame{
         menuEstudiante.add(buscarEstudiante);
         menuEstudiante.add(listEstudiante);
         menuBarraPrincipal.add(menuEstudiante);
+        
         nuevoEstudiante.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 nuevoEstudianteActionPerformed(e);
             }
         });
+        mniCurso = new JMenu("CURSO");
+        mniNuevoCurso = new JMenuItem("NUEVO");
+        mniNuevoCurso.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniNuevoCursoActionPerformed(e);
+            }
+        });
+        mniModificarCurso = new JMenuItem("MODICIFCAR");
+        mniEliminarCurso = new JMenuItem("ELIMINAR");
+        mniBuscarCurso = new JMenuItem("BUSCAR");
+        mniListaCurso = new JMenuItem("LISTA");
+
+        mniCurso.add(mniNuevoCurso);
+        mniCurso.add(mniModificarCurso);
+        mniCurso.add(mniEliminarCurso);
+        mniCurso.addSeparator();
+        mniCurso.add(mniBuscarCurso);
+        mniCurso.add(mniListaCurso);
+        menuBarraPrincipal.add(mniCurso);
+        
         
         this.setLayout(new BorderLayout());
         //this.setSize(360,240);
@@ -69,6 +98,7 @@ public class FrmMenuPrincipal extends JFrame{
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//terminar proceso de la ventana ejecutada
         
     }
+    
     public static void main(String[] args) {
         FrmMenuPrincipal ventana=new FrmMenuPrincipal();
         ventana.setVisible(true);
@@ -81,5 +111,10 @@ public class FrmMenuPrincipal extends JFrame{
         
         escritorio.add(nuevo);
         nuevo.setVisible(true);
+    }
+     public void mniNuevoCursoActionPerformed(ActionEvent e) {
+        CURSOVISTA frm = new CURSOVISTA();
+        escritorio.add(frm);
+        frm.setVisible(true);
     }
 }
