@@ -115,7 +115,7 @@ public class EstudianteImpl implements IEstudiante{
         try {
             conec = new Conexion();
             conec.conectar();
-            ResultSet resultado = conec.ejecutarQuery(sql, null);
+            ResultSet resultado = conec.ejecutarQuery(sql, listadoParametros);
             while (resultado.next()) {
                 estudiante = new Estudiante();
                 estudiante.setCodigo(resultado.getInt(1));
@@ -162,7 +162,6 @@ public class EstudianteImpl implements IEstudiante{
                 estudiante.setTelefono(resultado.getString(7));
                 estudiante.setSexo(resultado.getString(8));
                 estudiante.setDireccion(resultado.getString(9));
-                //estudiante.setDireccion(resultado.getObject(9)!=null? resultado.getString(9):null);
                 ICurso cursodao=new CursoImpl();
                 Curso curso=cursodao.obtener(resultado.getInt(10));
                 estudiante.setCurso(curso);
