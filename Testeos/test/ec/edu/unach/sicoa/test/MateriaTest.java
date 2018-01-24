@@ -26,7 +26,7 @@ public class MateriaTest {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-        assertEquals(filas > 0, true);
+        assertTrue(filas > 0);
 //
 //            //TEST OBTENER POR CODIGO
 ////        
@@ -36,19 +36,20 @@ public class MateriaTest {
             System.out.println("            " + mater.getCodigo()+ "    " + mater.getNombre());
         } catch (Exception e) {
         }
+        assertEquals(mater!=null, true);
 
 //            //TEST LISTADO
-        ArrayList<Materia> categ = new ArrayList<>();
+        ArrayList<Materia> materias = new ArrayList<>();
         try {
-            categ = materiaDao.obtener();
+            materias = materiaDao.obtener();
             System.out.println("Codigo de Materia \t" + "Nombre \t" + " \t Descripcion\t");
 
-            for (Materia cate : categ) {
+            for (Materia cate : materias) {
                 System.out.println(cate.getCodigo()+ "\t\t" + cate.getNombre() + "\t\t");
             }
         } catch (Exception e) {
         }
-        assertEquals(categ != null, true);
+        assertTrue(materias.size()>0);
 
     }
 
