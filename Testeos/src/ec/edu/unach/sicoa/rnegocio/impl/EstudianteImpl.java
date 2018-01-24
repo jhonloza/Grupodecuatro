@@ -6,21 +6,29 @@ import ec.edu.unach.sicoa.accesoadatos.Parametro;
 import ec.edu.unach.sicoa.rnegocio.dao.ICurso;
 import ec.edu.unach.sicoa.rnegocio.dao.IEstudiante;
 import ec.edu.unach.sicoa.rnegocio.entidades.*;
-import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.sql.*;
+import java.util.*;
 
 public class EstudianteImpl implements IEstudiante{
     @Override
     public int insertar(Estudiante estudiante) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "INSERT INTO estudiante(codigo, cedula, nombres, apellidos, fecha_nac, fecha_ingreso, telefono, sexo, direccion, curso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Estudiante(codigo, cedula, nombres, apellidos, fecha_nac, fecha_ingreso, telefono, sexo, direccion, curso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, estudiante.getCodigo()));
         listParametro.add(new Parametro(2, estudiante.getCedula()));
         listParametro.add(new Parametro(3, estudiante.getNombres()));
         listParametro.add(new Parametro(4, estudiante.getApellidos()));
-        listParametro.add(new Parametro(5, estudiante.getFechaNacimiento()));
-        listParametro.add(new Parametro(6, estudiante.getFechaInreso()));
+        if (estudiante.getFechaNacimiento() instanceof java.util.Date) {
+            listParametro.add(new Parametro(5, new java.sql.Date(((java.util.Date) estudiante.getFechaNacimiento()).getTime())));
+        } else {
+            listParametro.add(new Parametro(5, estudiante.getFechaNacimiento()));
+        }
+        if (estudiante.getFechaInreso()instanceof java.util.Date) {
+            listParametro.add(new Parametro(6, new java.sql.Date(((java.util.Date) estudiante.getFechaInreso()).getTime())));
+        } else {
+            listParametro.add(new Parametro(6, estudiante.getFechaInreso()));
+        }
         listParametro.add(new Parametro(7, estudiante.getTelefono()));
         listParametro.add(new Parametro(8, estudiante.getSexo()));
         listParametro.add(new Parametro(9, estudiante.getDireccion()!=null?estudiante.getDireccion():null));
@@ -48,8 +56,16 @@ public class EstudianteImpl implements IEstudiante{
         listParametro.add(new Parametro(2, estudiante.getCedula()));
         listParametro.add(new Parametro(3, estudiante.getNombres()));
         listParametro.add(new Parametro(4, estudiante.getApellidos()));
-        listParametro.add(new Parametro(5, estudiante.getFechaNacimiento()));
-        listParametro.add(new Parametro(6, estudiante.getFechaInreso()));
+        if (estudiante.getFechaNacimiento() instanceof java.util.Date) {
+            listParametro.add(new Parametro(5, new java.sql.Date(((java.util.Date) estudiante.getFechaNacimiento()).getTime())));
+        } else {
+            listParametro.add(new Parametro(5, estudiante.getFechaNacimiento()));
+        }
+        if (estudiante.getFechaInreso()instanceof java.util.Date) {
+            listParametro.add(new Parametro(6, new java.sql.Date(((java.util.Date) estudiante.getFechaInreso()).getTime())));
+        } else {
+            listParametro.add(new Parametro(6, estudiante.getFechaInreso()));
+        }
         listParametro.add(new Parametro(7, estudiante.getTelefono()));
         listParametro.add(new Parametro(8, estudiante.getSexo()));
         listParametro.add(new Parametro(9, estudiante.getDireccion()));
@@ -110,7 +126,8 @@ public class EstudianteImpl implements IEstudiante{
                 estudiante.setFechaInreso(resultado.getDate(6));
                 estudiante.setTelefono(resultado.getString(7));
                 estudiante.setSexo(resultado.getString(8));
-                estudiante.setDireccion(resultado.getObject(9)!=null? resultado.getString(9):null);
+                estudiante.setDireccion(resultado.getString(9));
+                //estudiante.setDireccion(resultado.getObject(9)!=null? resultado.getString(9):null);
                 ICurso cursodao=new CursoImpl();
                 Curso curso=cursodao.obtener(resultado.getInt(10));
                 estudiante.setCurso(curso);
@@ -144,7 +161,8 @@ public class EstudianteImpl implements IEstudiante{
                 estudiante.setFechaInreso(resultado.getDate(6));
                 estudiante.setTelefono(resultado.getString(7));
                 estudiante.setSexo(resultado.getString(8));
-                estudiante.setDireccion(resultado.getObject(9)!=null? resultado.getString(9):null);
+                estudiante.setDireccion(resultado.getString(9));
+                //estudiante.setDireccion(resultado.getObject(9)!=null? resultado.getString(9):null);
                 ICurso cursodao=new CursoImpl();
                 Curso curso=cursodao.obtener(resultado.getInt(10));
                 estudiante.setCurso(curso);

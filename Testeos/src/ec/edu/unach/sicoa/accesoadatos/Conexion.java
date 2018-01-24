@@ -49,28 +49,6 @@ public class Conexion {
         }
         return resultado;
     }
-
-    /*
-    public int ejecutarComando(String sql, ArrayList<Parametro> ValoresParametro) throws SQLException {
-        int nFilasAfectadas = 0;
-
-        try {
-            Statement estado = conexion.createStatement();
-            for (Parametro valor : ValoresParametro) {
-                int FilasAfectadas = estado.executeUpdate(sql + "(" + valor.getPosicion() + ", '" + valor.getValor() + "')");
-                if (FilasAfectadas > 0) {
-
-                    nFilasAfectadas++;
-                }
-                FilasAfectadas=0;
-            }
-        } catch (SQLException e) {
-            System.out.println("Error sql: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Error: "+e.getMessage());
-        }
-        return nFilasAfectadas;
-    }*/
     public int ejecutarComando(String sql, ArrayList<Parametro> ValoresParametro) {
         int nFilasAfectadas=0;
         ResultSet resultado = null;

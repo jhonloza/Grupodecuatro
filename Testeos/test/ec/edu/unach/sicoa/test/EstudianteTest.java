@@ -8,5 +8,9 @@ public class EstudianteTest {
     
     public EstudianteTest() {
     }
+    @Test
+    public void testeGeneral(){
+        
+    }
     
 }
