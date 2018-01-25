@@ -126,6 +126,7 @@ public class FrmMenuPrincipal extends JFrame {
         this.add(escritorio, BorderLayout.CENTER);
         this.setExtendedState(MAXIMIZED_BOTH); //PARA MAXIMIZAR LA VENTANA
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//terminar proceso de la ventana ejecutada
+        
 
     }
 
