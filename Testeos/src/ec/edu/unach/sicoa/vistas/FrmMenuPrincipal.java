@@ -146,7 +146,7 @@ public class FrmMenuPrincipal extends JFrame {
     }
 
     public void nuevoEstudianteActionPerformed(ActionEvent e) {
-        FormEstudiante nuevo = new FormEstudiante();
+        ESTUDIANTEV nuevo = new ESTUDIANTEV();
 
         escritorio.add(nuevo);
         nuevo.setVisible(true);
