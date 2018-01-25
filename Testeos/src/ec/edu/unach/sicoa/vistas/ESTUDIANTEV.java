@@ -159,8 +159,25 @@ public class ESTUDIANTEV extends JInternalFrame {
 
     public void btnAceptarActionListener(ActionEvent e) {
         
-        
+        try {
+            
+//            Estudiante est = new Estudiante();
+//            est.setCodigo(Integer.parseInt(txtTitulo1.getText()));
+//            est.setCedula(title);
+//            est.setNombres(title);
+//            est.setApellidos(title);
+//            est.setFechaNacimiento(fechaNacimiento);
+//            est.setFechaInreso(fechaInreso);
+//            est.setTelefono(title);
+//            est.setSexo(title);
+//            est.setDireccion(title);
+//            est.setCurso(curso);
+            
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
+        }
 
-        JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
+        
     }
 }

@@ -19,7 +19,7 @@ public class EstudianteTest {
 // TEST INSERTAR
         int filas = 0;
         Curso nCurso=new Curso(1, "SOCIALES");
-        Estudiante estudent = new Estudiante(13, "060460457-9","gwerfsad","unyawer",new Date(),new Date(),"123235","M","kaubfasd",nCurso);
+        Estudiante estudent = new Estudiante(1, "060460457-9","gwerfsad","unyawer",new Date(),new Date(),"123235","M","kaubfasd",nCurso);
         try {
             filas = estudianteDao.insertar(estudent);
             System.out.println("Ingreso de " + filas + " Filas Correctas");

@@ -19,7 +19,7 @@ public class MateriaTest {
 
 // TEST INSERTAR
         int filas = 0;
-        Materia mat = new Materia(5, "materia 5");
+        Materia mat = new Materia(1, "materia 1");
         try {
             filas = materiaDao.insertar(mat);
             System.out.println("Ingreso de " + filas + " Filas Correctas");

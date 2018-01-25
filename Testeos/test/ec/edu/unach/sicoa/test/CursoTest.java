@@ -18,7 +18,7 @@ public class CursoTest {
 
 // TEST INSERTAR
         int filas = 0;
-        Curso cur = new Curso(5, "quinto");
+        Curso cur = new Curso(4, "mishell");
         try {
             filas = cursoDao.insertar(cur);
             System.out.println("Ingreso de " + filas + " Filas Correctas");
