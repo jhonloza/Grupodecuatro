@@ -8,7 +8,10 @@ import javax.swing.*;
 import ec.edu.unach.sicoa.rnegocio.dao.*;
 import ec.edu.unach.sicoa.rnegocio.impl.*;
 import ec.edu.unach.sicoa.rnegocio.entidades.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
 
 public class ESTUDIANTEV extends JInternalFrame {
 
@@ -160,26 +163,40 @@ public class ESTUDIANTEV extends JInternalFrame {
     }
 
     public void btnAceptarActionListener(ActionEvent e) {
-        
+        IEstudiante estDao = new EstudianteImpl();
+
         try {
-            
+
             Estudiante est = new Estudiante();
             est.setCodigo(Integer.parseInt(txtTitulo1.getText()));
             est.setCedula(txtTitulo2.getText());
             est.setNombres(txtTitulo3.getText());
             est.setApellidos(txtTitulo4.getText());
-//            est.setFechaNacimiento();
-//            est.setFechaInreso(fechaInreso);
+            DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+                try {
+                 est.setFechaNacimiento(formatoFecha.parse(txtTitulo5.getText()));
+          est.setFechaInreso(formatoFecha.parse(txtTitulo6.getText()));
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "FECHA INCORRECTA", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+
             est.setTelefono(txtTitulo7.getText());
-             est.setDireccion(txtTitulo8.getText());
-            //est.setSexo(cmbGenero);         
-//            est.setCurso(cmbCurso);
-            
-            
+            est.setDireccion(txtTitulo8.getText());
+            est.setSexo(cmbGenero.getSelectedIndex()== 0 ? "masculino" : "femenino");         
+            est.setCurso((Curso)cmbCurso.getSelectedItem());
+            try {
+                if (estDao.insertar(est)>0) {
+                    JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "ERROR DESCONOCIDO", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception ex) {
+            }
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        
     }
 }
