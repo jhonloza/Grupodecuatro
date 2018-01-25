@@ -1,5 +1,8 @@
 package ec.edu.unach.sicoa.vistas;
 
+import ec.edu.unach.sicoa.rnegocio.dao.*;
+import ec.edu.unach.sicoa.rnegocio.entidades.*;
+import ec.edu.unach.sicoa.rnegocio.impl.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -27,7 +30,7 @@ public class DOCENTESV extends JInternalFrame {
     JTextField txtTitulo4;
     JTextField txtTitulo5;
     JTextField txtTitulo6;
-    JTextField txtTitulo7;
+    JComboBox<String> txtTitulo7;
     JTextField txtTitulo8;
     JTextField txtTitulo9;
     JTextField txtTitulo10;
@@ -69,11 +72,11 @@ public class DOCENTESV extends JInternalFrame {
         txtTitulo4 = new JTextField();
         txtTitulo5 = new JTextField();
         txtTitulo6 = new JTextField();
-        txtTitulo7 = new JTextField();
+        txtTitulo7 = new JComboBox<String>(new String[]{"C", "R"});
         txtTitulo8 = new JTextField();
         txtTitulo9 = new JTextField();
         txtTitulo10 = new JTextField();
-        txtTitulo11 = new JTextField();     
+        txtTitulo11 = new JTextField();
         cmbGenero = new JComboBox(new String[]{"masculino", "femenino"});
         btnLimpiar = new JButton("LIMPIAR");
         btnAceptar = new JButton("ACEPTAR");
@@ -93,15 +96,15 @@ public class DOCENTESV extends JInternalFrame {
         pnlcentral.add(categoria);
         pnlcentral.add(txtTitulo7);
         pnlcentral.add(sexo);
-       // pnlcentral.add(txtTitulo8);
+        // pnlcentral.add(txtTitulo8);
         pnlcentral.add(cmbGenero);
         pnlcentral.add(fechaNacimiento);
         pnlcentral.add(txtTitulo9);
         pnlcentral.add(fechaInreso);
         pnlcentral.add(txtTitulo10);
         pnlcentral.add(salario);
-        pnlcentral.add(txtTitulo11); 
-        
+        pnlcentral.add(txtTitulo11);
+
         pnlpie.add(btnLimpiar);
         pnlpie.add(btnAceptar);
 
@@ -118,6 +121,7 @@ public class DOCENTESV extends JInternalFrame {
         this.add(titulo0, BorderLayout.NORTH);
         this.add(pnlcentral, BorderLayout.CENTER);
         this.add(pnlpie, BorderLayout.SOUTH);
+        this.setClosable(true);
 
     }
 
@@ -129,7 +133,27 @@ public class DOCENTESV extends JInternalFrame {
     }
 
     public void btnAceptarActionListener(ActionEvent e) {
-        JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
+        try {
+            Docente nDocente = new Docente();
+            nDocente.setCodigo(Integer.parseInt(txtTitulo1.getText()));
+            nDocente.setCedula(txtTitulo2.getText());
+            nDocente.setNombres(txtTitulo2.getText());
+            nDocente.setApellidos(txtTitulo2.getText());
+            nDocente.setTelefono(txtTitulo2.getText());
+            nDocente.setDireccion(txtTitulo2.getText());
+            nDocente.setCategoria(txtTitulo7.getToolTipText());
+//            nDocente.setSexo(WIDTH);
+//            nDocente.setFechaNacimiento(WIDTH);
+//            nDocente.setFechaIngreso(WIDTH);
+            nDocente.setSalario(Double.parseDouble(txtTitulo11.getText()));
+            IDocente docDao = new DocenteImpl();
+            if (docDao.insertar(nDocente) > 0) {
+                JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "PROCESO Fallido!!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
 }
