@@ -42,6 +42,7 @@ public class ESTUDIANTEV extends JInternalFrame {
     JTextField txtTitulo10;
 
     JComboBox cmbGenero;
+    JComboBox cmbCurso;
     JButton btnLimpiar;
     JButton btnAceptar;
     JPanel pnlcentral;
@@ -88,6 +89,7 @@ public class ESTUDIANTEV extends JInternalFrame {
         txtTitulo9 = new JTextField();
         txtTitulo10 = new JTextField();
         cmbGenero = new JComboBox(new String[]{"masculino", "femenino"});
+        cmbCurso = new JComboBox(new String []{"primero","segundo"} );
         btnLimpiar = new JButton("LIMPIAR");
         btnAceptar = new JButton("ACEPTAR");
         this.add(titulo0, BorderLayout.NORTH);
@@ -110,7 +112,7 @@ public class ESTUDIANTEV extends JInternalFrame {
         //pnlcentral.add(txtTitulo8);
         
         pnlcentral.add(curso);
-        pnlcentral.add(txtTitulo9);
+        pnlcentral.add(cmbCurso);
         
         pnlpie.add(btnLimpiar);
         pnlpie.add(btnAceptar);
@@ -138,6 +140,8 @@ public class ESTUDIANTEV extends JInternalFrame {
         
         
     }
+      
+      
     public void btnAceptarActionListener(ActionEvent e){
         
         
