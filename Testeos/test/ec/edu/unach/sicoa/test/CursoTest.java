@@ -18,7 +18,7 @@ public class CursoTest {
 
 // TEST INSERTAR
         int filas = 0;
-        Curso cur = new Curso(13, "Ahsdfasd");
+        Curso cur = new Curso(5, "quinto");
         try {
             filas = cursoDao.insertar(cur);
             System.out.println("Ingreso de " + filas + " Filas Correctas");
@@ -31,7 +31,7 @@ public class CursoTest {
 ////        
         Curso ncurso = new Curso();
         try {
-            ncurso = cursoDao.obtener(13);
+            ncurso = cursoDao.obtener(5);
             System.out.println("            " + ncurso.getCodigo()+ "    " + ncurso.getDescripcion());
         } catch (Exception e) {
         }

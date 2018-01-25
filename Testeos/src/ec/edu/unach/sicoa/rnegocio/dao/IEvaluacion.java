@@ -11,7 +11,7 @@ public interface IEvaluacion {
 
     public int eliminar(Evaluacion evaluacion) throws Exception;
 
-    public Evaluacion obtener(int codigoEstudiante, int codigoMateria) throws Exception;
+    public Evaluacion obtener(int codigoEstudiante, int codigoMateria, int codigoDocente) throws Exception;
 
     public ArrayList<Evaluacion> obtener() throws Exception;
 }

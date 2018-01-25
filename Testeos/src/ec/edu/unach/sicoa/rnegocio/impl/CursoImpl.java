@@ -80,7 +80,7 @@ public class CursoImpl implements ICurso {
         try {
             conec = new Conexion();
             conec.conectar();
-            ResultSet resultado = conec.ejecutarQuery(sql, null);
+            ResultSet resultado = conec.ejecutarQuery(sql, listadoParametros);
             while (resultado.next()) {
                 curso = new Curso();
                 curso.setCodigo(resultado.getInt(1));
@@ -97,6 +97,7 @@ public class CursoImpl implements ICurso {
 
     @Override
     public ArrayList<Curso> obtener() throws Exception {
+        Curso curso = null;
         ArrayList<Curso> lista = new ArrayList<>();
         String sql = "SELECT codigo_c, descripcion FROM Curso";
         Conexion conec = null;
@@ -104,8 +105,8 @@ public class CursoImpl implements ICurso {
             conec = new Conexion();
             conec.conectar();
             ResultSet resultado = conec.ejecutarQuery(sql, null);
-            Curso curso = null;
             while (resultado.next()) {
+                curso=new Curso();
                 curso.setCodigo(resultado.getInt(1));
                 curso.setDescripcion(resultado.getString(2));
                 lista.add(curso);
