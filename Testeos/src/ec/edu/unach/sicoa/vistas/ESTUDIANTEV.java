@@ -7,9 +7,13 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import ec.edu.unach.sicoa.rnegocio.dao.*;
 import ec.edu.unach.sicoa.rnegocio.impl.*;
+import ec.edu.unach.sicoa.rnegocio.entidades.*;
+import java.util.*;
 
 public class ESTUDIANTEV extends JInternalFrame {
 
+    List<Curso> lstCurso;
+    JComboBox<Curso> cmbCurso;
     JLabel titulo0;
     JLabel codigo;
 
@@ -42,7 +46,7 @@ public class ESTUDIANTEV extends JInternalFrame {
     JTextField txtTitulo10;
 
     JComboBox cmbGenero;
-    JComboBox cmbCurso;
+
     JButton btnLimpiar;
     JButton btnAceptar;
     JPanel pnlcentral;
@@ -89,15 +93,16 @@ public class ESTUDIANTEV extends JInternalFrame {
         txtTitulo9 = new JTextField();
         txtTitulo10 = new JTextField();
         cmbGenero = new JComboBox(new String[]{"masculino", "femenino"});
-        cmbCurso = new JComboBox(new String []{"primero","segundo"} );
+        CargarCursos();
+        cmbCurso = new JComboBox(lstCurso.toArray());
         btnLimpiar = new JButton("LIMPIAR");
         btnAceptar = new JButton("ACEPTAR");
         this.add(titulo0, BorderLayout.NORTH);
-        pnlcentral.add(codigo);  
+        pnlcentral.add(codigo);
         pnlcentral.add(txtTitulo1);
         pnlcentral.add(cedula);
         pnlcentral.add(txtTitulo2);
-        pnlcentral.add(nombres); 
+        pnlcentral.add(nombres);
         pnlcentral.add(txtTitulo3);
         pnlcentral.add(apellidos);
         pnlcentral.add(txtTitulo4);
@@ -110,20 +115,20 @@ public class ESTUDIANTEV extends JInternalFrame {
         pnlcentral.add(sexo);
         pnlcentral.add(cmbGenero);
         //pnlcentral.add(txtTitulo8);
-        
+
         pnlcentral.add(curso);
         pnlcentral.add(cmbCurso);
-        
+
         pnlpie.add(btnLimpiar);
         pnlpie.add(btnAceptar);
-        
+
         btnAceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     btnAceptarActionListener(e);
                 } catch (Exception ex) {
-                    System.out.print("error "+ex.getMessage());
+                    System.out.print("error " + ex.getMessage());
                 }
             }
         });
@@ -133,20 +138,27 @@ public class ESTUDIANTEV extends JInternalFrame {
         this.setClosable(true);
 
     }
-      public static void main(String[] args) {
-        
+
+    public static void main(String[] args) {
+
         ESTUDIANTEV frmMenu = new ESTUDIANTEV();
         frmMenu.setVisible(true);
-        
-        
+
     }
-      
-      
-    public void btnAceptarActionListener(ActionEvent e){
-        
-        
-        JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction",JOptionPane.INFORMATION_MESSAGE);
+
+    public void CargarCursos() {
+
+        ICurso curDao = new CursoImpl();
+        try {
+            lstCurso = curDao.obtener();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "ERROR AL CARGAR CURSOS", "ERROR" + e.getMessage(), JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }
+
+    public void btnAceptarActionListener(ActionEvent e) {
+
+        JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
     }
 }
-
-
