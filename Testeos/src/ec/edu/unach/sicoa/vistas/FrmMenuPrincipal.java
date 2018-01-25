@@ -1,10 +1,16 @@
 package ec.edu.unach.sicoa.vistas;
 
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.util.*;
+import ec.edu.unach.sicoa.rnegocio.dao.*;
+import ec.edu.unach.sicoa.rnegocio.entidades.*;
+import ec.edu.unach.sicoa.rnegocio.impl.*;
+
+
 
 public class FrmMenuPrincipal extends JFrame {
 
