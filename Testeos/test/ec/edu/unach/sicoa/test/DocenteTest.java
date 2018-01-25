@@ -18,7 +18,7 @@ public class DocenteTest {
 
 // TEST INSERTAR
         int filas = 0;
-        Docente doc = new Docente(1, "321654987", "andres", "orozco", "321654987", "riobamba", "c", "M", new java.util.Date(), new java.util.Date(), 253);
+        Docente doc = new Docente(5, "321654987", "andres", "orozco", "321654987", "riobamba", "c", "M", new java.util.Date(), new java.util.Date(), 253);
         try {
             filas = docenteDao.insertar(doc);
             System.out.println("Ingreso de " + filas + " Filas Correctas");
