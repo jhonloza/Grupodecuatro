@@ -9,7 +9,7 @@ public class DocenteImpl implements IDocente{
     @Override
     public int insertar(Docente docente) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "INSERT INTO Docente(codigo, cedula, nombres, apellidos, fecha_nac, fecha_ingreso, telefono, sexo, direccion, curso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Docente(Cod_docente, Cedula, Nombre, Apellido, Telefono, Direccion, Categoria, Sexo, Fecha_nacimiento, Fecha_ingreso, Salario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, docente.getCodigo()));
         listParametro.add(new Parametro(2, docente.getCedula()));
@@ -47,7 +47,7 @@ public class DocenteImpl implements IDocente{
     @Override
     public int modificar(Docente docente) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "UPDATE docente SET codigo=?, cedula=?, nombres=?, apellidos=?, fecha_nac=?, fecha_ingreso=?, telefono=?, sexo=?, direccion=?, curso=? WHERE codigo=?";
+        String sql = "UPDATE docente SET Cod_docente=?, Cedula=?, Nombre=?, Apellido=?, Telefono=?, Direccion=?, Categoria=?, Sexo=?, Fecha_nacimiento=?, Fecha_ingreso=?, Salario=? WHERE Cod_docente=?";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, docente.getCodigo()));
         listParametro.add(new Parametro(2, docente.getCedula()));
@@ -85,7 +85,7 @@ public class DocenteImpl implements IDocente{
     @Override
     public int eliminar(Docente docente) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "DELETE FROM docente WHERE codigo=?";
+        String sql = "DELETE FROM Docente WHERE Cod_docente=?";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, docente.getCodigo()));
         Conexion conec = null;
@@ -105,7 +105,7 @@ public class DocenteImpl implements IDocente{
     @Override
     public Docente obtener(int codigo) throws Exception {
         Docente docente = null;
-        String sql = "SELECT codigo, cedula, nombres, apellidos, fecha_nac, fecha_ingreso, telefono, sexo, direccion, curso FROM docente where codigo = ?";
+        String sql = "SELECT Cod_docente, Cedula, Nombre, Apellido, Telefono, Direccion, Categoria, Sexo, Fecha_nacimiento, Fecha_ingreso, Salario FROM Docente WHERE Cod_docente = ?";
         ArrayList<Parametro> listadoParametros = new ArrayList<>();
         listadoParametros.add(new Parametro(1, codigo));
         Conexion conec = null;
@@ -139,7 +139,7 @@ public class DocenteImpl implements IDocente{
     @Override
     public ArrayList<Docente> obtener() throws Exception {
         ArrayList<Docente> lista = new ArrayList<>();
-        String sql = "SELECT codigo, cedula, nombres, apellidos, fecha_nac, fecha_ingreso, telefono, sexo, direccion, curso FROM docente";
+        String sql = "SELECT Cod_docente, Cedula, Nombre, Apellido, Telefono, Direccion, Categoria, Sexo, Fecha_nacimiento, Fecha_ingreso, Salario FROM Docente";
         Conexion conec = null;
         try {
             conec = new Conexion();
