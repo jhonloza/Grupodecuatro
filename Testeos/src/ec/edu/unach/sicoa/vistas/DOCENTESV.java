@@ -27,17 +27,17 @@ public class DOCENTESV extends JInternalFrame {
     JLabel fechaInreso;
     JLabel salario;
 
-    JTextField txtTitulo1;
-    JTextField txtTitulo2;
-    JTextField txtTitulo3;
-    JTextField txtTitulo4;
-    JTextField txtTitulo5;
-    JTextField txtTitulo6;
-    JComboBox<String> txtTitulo7;
+    JTextField txcod;
+    JTextField txcedu;
+    JTextField txNombre;
+    JTextField txApellido;
+    JTextField txTelf;
+    JTextField txDir;
+    JComboBox<String> cmdCateg;
     JTextField txtTitulo8;
-    JTextField txtTitulo9;
-    JTextField txtTitulo10;
-    JTextField txtTitulo11;
+    JTextField txFechaNac;
+    JTextField txFechIng;
+    JTextField txSalario;
 
     JComboBox cmbGenero;
     JButton btnLimpiar;
@@ -69,44 +69,43 @@ public class DOCENTESV extends JInternalFrame {
         fechaInreso = new JLabel("FECHA INGRESO");
         salario = new JLabel("salario");
 
-        txtTitulo1 = new JTextField();
-        txtTitulo2 = new JTextField();
-        txtTitulo3 = new JTextField();
-        txtTitulo4 = new JTextField();
-        txtTitulo5 = new JTextField();
-        txtTitulo6 = new JTextField();
-        txtTitulo7 = new JComboBox<String>(new String[]{"Contrato", "R"});
+        txcod = new JTextField();
+        txcedu = new JTextField();
+        txNombre = new JTextField();
+        txApellido = new JTextField();
+        txTelf = new JTextField();
+        txDir = new JTextField();
+        cmdCateg = new JComboBox<String>(new String[]{"Contrato", "R"});
         txtTitulo8 = new JTextField();
-        txtTitulo9 = new JTextField();
-        txtTitulo10 = new JTextField();
-        txtTitulo11 = new JTextField();
+        txFechaNac = new JTextField();
+        txFechIng = new JTextField();
+        txSalario = new JTextField();
         cmbGenero = new JComboBox(new String[]{"masculino", "femenino"});
         btnLimpiar = new JButton("LIMPIAR");
         btnAceptar = new JButton("ACEPTAR");
         this.add(titulo0, BorderLayout.NORTH);
         pnlcentral.add(codigo);
-        pnlcentral.add(txtTitulo1);
+        pnlcentral.add(txcod);
         pnlcentral.add(cedula);
-        pnlcentral.add(txtTitulo2);
+        pnlcentral.add(txcedu);
         pnlcentral.add(nombres);
-        pnlcentral.add(txtTitulo3);
+        pnlcentral.add(txNombre);
         pnlcentral.add(apellidos);
-        pnlcentral.add(txtTitulo4);
+        pnlcentral.add(txApellido);
         pnlcentral.add(telefono);
-        pnlcentral.add(txtTitulo5);
+        pnlcentral.add(txTelf);
         pnlcentral.add(direccion);
-        pnlcentral.add(txtTitulo6);
+        pnlcentral.add(txDir);
         pnlcentral.add(categoria);
-        pnlcentral.add(txtTitulo7);
+        pnlcentral.add(cmdCateg);
         pnlcentral.add(sexo);
-        // pnlcentral.add(txtTitulo8);
         pnlcentral.add(cmbGenero);
         pnlcentral.add(fechaNacimiento);
-        pnlcentral.add(txtTitulo9);
+        pnlcentral.add(txFechaNac);
         pnlcentral.add(fechaInreso);
-        pnlcentral.add(txtTitulo10);
+        pnlcentral.add(txFechIng);
         pnlcentral.add(salario);
-        pnlcentral.add(txtTitulo11);
+        pnlcentral.add(txSalario);
 
         pnlpie.add(btnLimpiar);
         pnlpie.add(btnAceptar);
@@ -138,22 +137,22 @@ public class DOCENTESV extends JInternalFrame {
     public void btnAceptarActionListener(ActionEvent e) {
         try {
             Docente nDocente = new Docente();
-            nDocente.setCodigo(Integer.parseInt(txtTitulo1.getText()));
-            nDocente.setCedula(txtTitulo2.getText());
-            nDocente.setNombres(txtTitulo3.getText());
-            nDocente.setApellidos(txtTitulo4.getText());
-            nDocente.setTelefono(txtTitulo5.getText());
-            nDocente.setDireccion(txtTitulo6.getText());
-            nDocente.setCategoria(txtTitulo7.getSelectedIndex() == 0 ? "C" : "R");
+            nDocente.setCodigo(Integer.parseInt(txcod.getText()));
+            nDocente.setCedula(txcedu.getText());
+            nDocente.setNombres(txNombre.getText());
+            nDocente.setApellidos(txApellido.getText());
+            nDocente.setTelefono(txTelf.getText());
+            nDocente.setDireccion(txDir.getText());
+            nDocente.setCategoria(cmdCateg.getSelectedIndex() == 0 ? "C" : "R");
             nDocente.setSexo(cmbGenero.getSelectedIndex() == 0 ? "M" : "F");
             DateFormat formatoFecha=new SimpleDateFormat("yyyy-MM-dd");
             try {
-                nDocente.setFechaNacimiento(formatoFecha.parse(txtTitulo8.getText()));
-                nDocente.setFechaIngreso(formatoFecha.parse(txtTitulo9.getText()));
+                nDocente.setFechaNacimiento(formatoFecha.parse(txFechaNac.getText()));
+                nDocente.setFechaIngreso(formatoFecha.parse(txFechIng.getText()));
             } catch (Exception er) {
                 JOptionPane.showMessageDialog(this, "ERROR DE FECHA!!"+er.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-            nDocente.setSalario(Double.parseDouble(txtTitulo11.getText()));
+            nDocente.setSalario(Double.parseDouble(txSalario.getText()));
             IDocente docDao = new DocenteImpl();
             if (docDao.insertar(nDocente) > 0) {
                 JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
