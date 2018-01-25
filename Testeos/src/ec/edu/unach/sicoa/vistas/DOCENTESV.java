@@ -3,10 +3,13 @@ package ec.edu.unach.sicoa.vistas;
 import ec.edu.unach.sicoa.rnegocio.dao.*;
 import ec.edu.unach.sicoa.rnegocio.entidades.*;
 import ec.edu.unach.sicoa.rnegocio.impl.*;
+import java.util.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.*;
 
 public class DOCENTESV extends JInternalFrame {
@@ -72,7 +75,7 @@ public class DOCENTESV extends JInternalFrame {
         txtTitulo4 = new JTextField();
         txtTitulo5 = new JTextField();
         txtTitulo6 = new JTextField();
-        txtTitulo7 = new JComboBox<String>(new String[]{"C", "R"});
+        txtTitulo7 = new JComboBox<String>(new String[]{"Contrato", "R"});
         txtTitulo8 = new JTextField();
         txtTitulo9 = new JTextField();
         txtTitulo10 = new JTextField();
@@ -137,21 +140,26 @@ public class DOCENTESV extends JInternalFrame {
             Docente nDocente = new Docente();
             nDocente.setCodigo(Integer.parseInt(txtTitulo1.getText()));
             nDocente.setCedula(txtTitulo2.getText());
-            nDocente.setNombres(txtTitulo2.getText());
-            nDocente.setApellidos(txtTitulo2.getText());
-            nDocente.setTelefono(txtTitulo2.getText());
-            nDocente.setDireccion(txtTitulo2.getText());
-            nDocente.setCategoria(txtTitulo7.getToolTipText());
-//            nDocente.setSexo(WIDTH);
-//            nDocente.setFechaNacimiento(WIDTH);
-//            nDocente.setFechaIngreso(WIDTH);
+            nDocente.setNombres(txtTitulo3.getText());
+            nDocente.setApellidos(txtTitulo4.getText());
+            nDocente.setTelefono(txtTitulo5.getText());
+            nDocente.setDireccion(txtTitulo6.getText());
+            nDocente.setCategoria(txtTitulo7.getSelectedIndex() == 0 ? "C" : "R");
+            nDocente.setSexo(cmbGenero.getSelectedIndex() == 0 ? "M" : "F");
+            DateFormat formatoFecha=new SimpleDateFormat("yyyy-MM-dd");
+            try {
+                nDocente.setFechaNacimiento(formatoFecha.parse(txtTitulo8.getText()));
+                nDocente.setFechaIngreso(formatoFecha.parse(txtTitulo9.getText()));
+            } catch (Exception er) {
+                JOptionPane.showMessageDialog(this, "ERROR DE FECHA!!"+er.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
             nDocente.setSalario(Double.parseDouble(txtTitulo11.getText()));
             IDocente docDao = new DocenteImpl();
             if (docDao.insertar(nDocente) > 0) {
                 JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "PROCESO Fallido!!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "PROCESO FALLIDO!!"+ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }
