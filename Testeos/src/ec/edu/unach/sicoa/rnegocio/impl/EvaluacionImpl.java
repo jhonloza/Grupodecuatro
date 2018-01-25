@@ -68,8 +68,8 @@ int numFilasAfectadas = 0;
         String sql = "DELETE FROM Evaluacion WHERE Codigo_estudiante=?, Codigo_materia=?, Codigo_docente=?";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, evaluacion.getEstudiante().getCodigo()));
-        listParametro.add(new Parametro(1, evaluacion.getMateria().getCodigo()));
-        listParametro.add(new Parametro(1, evaluacion.getDocente().getCodigo()));
+        listParametro.add(new Parametro(2, evaluacion.getMateria().getCodigo()));
+        listParametro.add(new Parametro(3, evaluacion.getDocente().getCodigo()));
         Conexion conec = null;
         try {
             conec = new Conexion();
@@ -96,8 +96,8 @@ int numFilasAfectadas = 0;
         String sql = "SELECT Aporte1, Aporte2, Total, Asistencia, Equivalencia, Codigo_estudiante, Codigo_materia, Codigo_docente FROM Evaluacion where Codigo_estudiante=?, Codigo_materia=?, Codigo_docente=?";
         ArrayList<Parametro> listadoParametros = new ArrayList<>();
         listadoParametros.add(new Parametro(1, codigoEstudiante));
-        listadoParametros.add(new Parametro(1, codigoMateria));
-        listadoParametros.add(new Parametro(1, codigoDocente));
+        listadoParametros.add(new Parametro(2, codigoMateria));
+        listadoParametros.add(new Parametro(3, codigoDocente));
         Conexion conec = null;
         try {
             conec = new Conexion();
