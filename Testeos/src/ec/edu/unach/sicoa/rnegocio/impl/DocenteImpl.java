@@ -9,7 +9,7 @@ public class DocenteImpl implements IDocente{
     @Override
     public int insertar(Docente docente) throws Exception {
         int numFilasAfectadas = 0;
-        String sql = "INSERT INTO Docente(codigo, cedula, nombres, apellidos, fecha_nac, fecha_ingreso, telefono, sexo, direccion, curso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Docente(codigo, cedula, nombres, apellidos, fecha_nac, fecha_ingreso, telefono, sexo, direccion, curso) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         ArrayList<Parametro> listParametro = new ArrayList<>();
         listParametro.add(new Parametro(1, docente.getCodigo()));
         listParametro.add(new Parametro(2, docente.getCedula()));

@@ -19,7 +19,7 @@ public class MateriaTest {
 
 // TEST INSERTAR
         int filas = 0;
-        Materia mat = new Materia(13, "Ahsdfasd");
+        Materia mat = new Materia(5, "materia 5");
         try {
             filas = materiaDao.insertar(mat);
             System.out.println("Ingreso de " + filas + " Filas Correctas");
@@ -32,7 +32,7 @@ public class MateriaTest {
 ////        
         Materia mater = new Materia();
         try {
-            mater = materiaDao.obtener(13);
+            mater = materiaDao.obtener(5);
             System.out.println("            " + mater.getCodigo()+ "    " + mater.getNombre());
         } catch (Exception e) {
         }
