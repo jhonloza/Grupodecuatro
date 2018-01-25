@@ -112,6 +112,8 @@ public class ESTUDIANTEV extends JInternalFrame {
         pnlcentral.add(txtTitulo6);
         pnlcentral.add(telefono);
         pnlcentral.add(txtTitulo7);
+        pnlcentral.add(direccion);
+        pnlcentral.add(txtTitulo8);
         pnlcentral.add(sexo);
         pnlcentral.add(cmbGenero);
         //pnlcentral.add(txtTitulo8);
@@ -161,17 +163,17 @@ public class ESTUDIANTEV extends JInternalFrame {
         
         try {
             
-//            Estudiante est = new Estudiante();
-//            est.setCodigo(Integer.parseInt(txtTitulo1.getText()));
-//            est.setCedula(title);
-//            est.setNombres(title);
-//            est.setApellidos(title);
-//            est.setFechaNacimiento(fechaNacimiento);
+            Estudiante est = new Estudiante();
+            est.setCodigo(Integer.parseInt(txtTitulo1.getText()));
+            est.setCedula(txtTitulo2.getText());
+            est.setNombres(txtTitulo3.getText());
+            est.setApellidos(txtTitulo4.getText());
+//            est.setFechaNacimiento();
 //            est.setFechaInreso(fechaInreso);
-//            est.setTelefono(title);
-//            est.setSexo(title);
-//            est.setDireccion(title);
-//            est.setCurso(curso);
+            est.setTelefono(txtTitulo7.getText());
+             est.setDireccion(txtTitulo8.getText());
+            //est.setSexo(cmbGenero);         
+//            est.setCurso(cmbCurso);
             
             
         } catch (Exception ex) {
