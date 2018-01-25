@@ -37,16 +37,16 @@ public class ESTUDIANTEV extends JInternalFrame {
     JLabel direccion;
 
     JLabel curso;
-    JTextField txtTitulo1;
-    JTextField txtTitulo2;
-    JTextField txtTitulo3;
-    JTextField txtTitulo4;
-    JTextField txtTitulo5;
-    JTextField txtTitulo6;
-    JTextField txtTitulo7;
-    JTextField txtTitulo8;
+    JTextField txCodi;
+    JTextField txCedula;
+    JTextField txNombre;
+    JTextField txApellido;
+    JTextField txFechaNac;
+    JTextField txFechaIng;
+    JTextField txTelf;
+    JTextField txDir;
     JTextField txtTitulo9;
-    JTextField txtTitulo10;
+    JTextField txCodi0;
 
     JComboBox cmbGenero;
 
@@ -85,16 +85,16 @@ public class ESTUDIANTEV extends JInternalFrame {
 
         curso = new JLabel("CURSO");
 
-        txtTitulo1 = new JTextField();
-        txtTitulo2 = new JTextField();
-        txtTitulo3 = new JTextField();
-        txtTitulo4 = new JTextField();
-        txtTitulo5 = new JTextField();
-        txtTitulo6 = new JTextField();
-        txtTitulo7 = new JTextField();
-        txtTitulo8 = new JTextField();
+        txCodi = new JTextField();
+        txCedula = new JTextField();
+        txNombre = new JTextField();
+        txApellido = new JTextField();
+        txFechaNac = new JTextField();
+        txFechaIng = new JTextField();
+        txTelf = new JTextField();
+        txDir = new JTextField();
         txtTitulo9 = new JTextField();
-        txtTitulo10 = new JTextField();
+        txCodi0 = new JTextField();
         cmbGenero = new JComboBox(new String[]{"masculino", "femenino"});
         CargarCursos();
         cmbCurso = new JComboBox(lstCurso.toArray());
@@ -102,24 +102,23 @@ public class ESTUDIANTEV extends JInternalFrame {
         btnAceptar = new JButton("ACEPTAR");
         this.add(titulo0, BorderLayout.NORTH);
         pnlcentral.add(codigo);
-        pnlcentral.add(txtTitulo1);
+        pnlcentral.add(txCodi);
         pnlcentral.add(cedula);
-        pnlcentral.add(txtTitulo2);
+        pnlcentral.add(txCedula);
         pnlcentral.add(nombres);
-        pnlcentral.add(txtTitulo3);
+        pnlcentral.add(txNombre);
         pnlcentral.add(apellidos);
-        pnlcentral.add(txtTitulo4);
+        pnlcentral.add(txApellido);
         pnlcentral.add(fechaNacimiento);
-        pnlcentral.add(txtTitulo5);
+        pnlcentral.add(txFechaNac);
         pnlcentral.add(fechaInreso);
-        pnlcentral.add(txtTitulo6);
+        pnlcentral.add(txFechaIng);
         pnlcentral.add(telefono);
-        pnlcentral.add(txtTitulo7);
+        pnlcentral.add(txTelf);
         pnlcentral.add(direccion);
-        pnlcentral.add(txtTitulo8);
+        pnlcentral.add(txDir);
         pnlcentral.add(sexo);
         pnlcentral.add(cmbGenero);
-        //pnlcentral.add(txtTitulo8);
 
         pnlcentral.add(curso);
         pnlcentral.add(cmbCurso);
@@ -168,34 +167,30 @@ public class ESTUDIANTEV extends JInternalFrame {
         try {
 
             Estudiante est = new Estudiante();
-            est.setCodigo(Integer.parseInt(txtTitulo1.getText()));
-            est.setCedula(txtTitulo2.getText());
-            est.setNombres(txtTitulo3.getText());
-            est.setApellidos(txtTitulo4.getText());
+            est.setCodigo(Integer.parseInt(txCodi.getText()));
+            est.setCedula(txCedula.getText());
+            est.setNombres(txNombre.getText());
+            est.setApellidos(txApellido.getText());
             DateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-                try {
-                 est.setFechaNacimiento(formatoFecha.parse(txtTitulo5.getText()));
-          est.setFechaInreso(formatoFecha.parse(txtTitulo6.getText()));
+            try {
+                est.setFechaNacimiento(formatoFecha.parse(txFechaNac.getText()));
+                est.setFechaInreso(formatoFecha.parse(txFechaIng.getText()));
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "FECHA INCORRECTA", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-
-            est.setTelefono(txtTitulo7.getText());
-            est.setDireccion(txtTitulo8.getText());
-            est.setSexo(cmbGenero.getSelectedIndex()== 0 ? "masculino" : "femenino");         
-            est.setCurso((Curso)cmbCurso.getSelectedItem());
-            try {
-                if (estDao.insertar(est)>0) {
+            est.setTelefono(txTelf.getText());
+            est.setDireccion(txDir.getText());
+            est.setSexo(cmbGenero.getSelectedIndex() == 0 ? "masculino" : "femenino");
+            est.setCurso((Curso) cmbCurso.getSelectedItem());
+                if (estDao.insertar(est) > 0) {
                     JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
-                    
+
                 } else {
-                    JOptionPane.showMessageDialog(this, "ERROR DESCONOCIDO", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ERROR", "ERROR", JOptionPane.INFORMATION_MESSAGE);
                 }
-            } catch (Exception ex) {
-            }
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "ERROR !! "+ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }
