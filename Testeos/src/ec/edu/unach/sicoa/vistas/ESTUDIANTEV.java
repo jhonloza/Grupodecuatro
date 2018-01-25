@@ -180,7 +180,7 @@ public class ESTUDIANTEV extends JInternalFrame {
             }
             est.setTelefono(txTelf.getText());
             est.setDireccion(txDir.getText());
-            est.setSexo(cmbGenero.getSelectedIndex() == 0 ? "masculino" : "femenino");
+            est.setSexo(cmbGenero.getSelectedIndex() == 0 ? "M" : "F");
             est.setCurso((Curso) cmbCurso.getSelectedItem());
                 if (estDao.insertar(est) > 0) {
                     JOptionPane.showMessageDialog(this, "PROCESO CORRECTO!!", "Transaction", JOptionPane.INFORMATION_MESSAGE);
