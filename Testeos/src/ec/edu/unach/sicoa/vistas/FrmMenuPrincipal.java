@@ -32,6 +32,14 @@ public class FrmMenuPrincipal extends JFrame {
     JMenuItem mniBuscarCurso;
     JMenuItem mniListaCurso;
     JDesktopPane escritorio;
+    
+    JMenu mniDocente;
+    JMenuItem mniNuevoDocente;
+    JMenuItem mniModificarDocente;
+    JMenuItem mniEliminarDocente;
+    JMenuItem mniBuscarDocente;
+    JMenuItem mniListaDocente;
+   
 
     JMenu mniMateria;
     JMenuItem mniNuevoMateria;
@@ -125,6 +133,27 @@ public class FrmMenuPrincipal extends JFrame {
         mniMateria.add(mniBuscarMateria);
         mniMateria.add(mniListaMateria);
         menuBarraPrincipal.add(mniMateria);
+        
+        mniDocente = new JMenu("DOCENTE");
+        mniNuevoDocente = new JMenuItem("NUEVO");
+        mniNuevoDocente.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mniNuevoDocenteActionPerformed(e);
+            }
+        });
+        mniModificarDocente = new JMenuItem("MODICIFCAR");
+        mniEliminarDocente = new JMenuItem("ELIMINAR");
+        mniBuscarDocente = new JMenuItem("BUSCAR");
+        mniListaDocente = new JMenuItem("LISTA");
+
+        mniDocente.add(mniNuevoDocente);
+        mniDocente.add(mniModificarDocente);
+        mniDocente.add(mniEliminarDocente);
+        mniDocente.addSeparator();
+        mniDocente.add(mniBuscarDocente);
+        mniDocente.add(mniListaDocente);
+        menuBarraPrincipal.add(mniDocente);
 
         this.setLayout(new BorderLayout());
         //this.setSize(360,240);
@@ -160,6 +189,12 @@ public class FrmMenuPrincipal extends JFrame {
     
      public void mniNuevoMateriaActionPerformed(ActionEvent e) {
         MATERIAV frm = new MATERIAV();
+        escritorio.add(frm);
+        frm.setVisible(true);
+    }
+     
+     public void mniNuevoDocenteActionPerformed(ActionEvent e) {
+        DOCENTESV frm = new DOCENTESV();
         escritorio.add(frm);
         frm.setVisible(true);
     }
