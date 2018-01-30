@@ -24,7 +24,7 @@ public class DOCENTESV extends JInternalFrame {
     JLabel categoria;
     JLabel sexo;
     JLabel fechaNacimiento;
-    JLabel fechaInreso;
+    JLabel fechaIngreso;
     JLabel salario;
 
     JTextField txcod;
@@ -66,7 +66,7 @@ public class DOCENTESV extends JInternalFrame {
         categoria = new JLabel("A");
         sexo = new JLabel("GENERO");
         fechaNacimiento = new JLabel("FECHA NACIMIENTO");
-        fechaInreso = new JLabel("FECHA INGRESO");
+        fechaIngreso = new JLabel("FECHA INGRESO");
         salario = new JLabel("salario");
 
         txcod = new JTextField();
@@ -75,7 +75,7 @@ public class DOCENTESV extends JInternalFrame {
         txApellido = new JTextField();
         txTelf = new JTextField();
         txDir = new JTextField();
-        cmdCateg = new JComboBox<String>(new String[]{"Contrato", "R"});
+        cmdCateg = new JComboBox<String>(new String[]{"Contrato", "Nombramiento"});
         txtTitulo8 = new JTextField();
         txFechaNac = new JTextField();
         txFechIng = new JTextField();
@@ -102,7 +102,7 @@ public class DOCENTESV extends JInternalFrame {
         pnlcentral.add(cmbGenero);
         pnlcentral.add(fechaNacimiento);
         pnlcentral.add(txFechaNac);
-        pnlcentral.add(fechaInreso);
+        pnlcentral.add(fechaIngreso);
         pnlcentral.add(txFechIng);
         pnlcentral.add(salario);
         pnlcentral.add(txSalario);
@@ -143,7 +143,7 @@ public class DOCENTESV extends JInternalFrame {
             nDocente.setApellidos(txApellido.getText());
             nDocente.setTelefono(txTelf.getText());
             nDocente.setDireccion(txDir.getText());
-            nDocente.setCategoria(cmdCateg.getSelectedIndex() == 0 ? "C" : "R");
+            nDocente.setCategoria(cmdCateg.getSelectedIndex() == 0 ? "C" : "N");
             nDocente.setSexo(cmbGenero.getSelectedIndex() == 0 ? "M" : "F");
             DateFormat formatoFecha=new SimpleDateFormat("yyyy-MM-dd");
             try {
