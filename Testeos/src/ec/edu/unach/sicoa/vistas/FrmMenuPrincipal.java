@@ -161,6 +161,13 @@ public class FrmMenuPrincipal extends JFrame {
         mniDocente.addSeparator();
         mniDocente.add(mniBuscarDocente);
         mniDocente.add(mniListaDocente);
+        mniListaDocente.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listaDocenteActionPerformed(e);
+            }
+        });
+        
         menuBarraPrincipal.add(mniDocente);
 
         this.setLayout(new BorderLayout());
@@ -209,6 +216,11 @@ public class FrmMenuPrincipal extends JFrame {
      
      public void listaEstudianteActionPerformed(ActionEvent e) {
         LISTAESTUDIANTEV frm = new LISTAESTUDIANTEV();
+        escritorio.add(frm);
+        frm.setVisible(true);
+    }
+     public void listaDocenteActionPerformed(ActionEvent e) {
+        LISTADOCENTEV frm = new LISTADOCENTEV();
         escritorio.add(frm);
         frm.setVisible(true);
     }

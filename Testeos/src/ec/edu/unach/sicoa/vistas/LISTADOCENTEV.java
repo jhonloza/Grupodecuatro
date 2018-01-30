@@ -8,21 +8,23 @@ import ec.edu.unach.sicoa.rnegocio.dao.*;
 import ec.edu.unach.sicoa.rnegocio.entidades.*;
 import java.util.*;
 
-public class LISTAESTUDIANTEV extends JInternalFrame {
+public class LISTADOCENTEV extends JInternalFrame {
 
     JLabel titulo;
     JTable tabla;
     DefaultTableModel modelo;
+    JScrollPane sr;
 
-    public LISTAESTUDIANTEV() {
+    public LISTADOCENTEV() {
 
         this.setSize(800, 600);
         this.setLayout(new BorderLayout());
         this.setClosable(true);
-        titulo = new JLabel("LISTADO DE ESTUDIANTES");
+        titulo = new JLabel("LISTADO DE DOCENTES");
         tabla = new JTable();
+        sr = new JScrollPane(tabla);
         this.add(titulo, BorderLayout.NORTH);
-        this.add(tabla, BorderLayout.CENTER);
+        this.add(sr, BorderLayout.CENTER);
 
         cargarTabla();
 
@@ -38,18 +40,20 @@ public class LISTAESTUDIANTEV extends JInternalFrame {
 
         modelo.addColumn("APELLIDO");
 
-        modelo.addColumn("FECHA NACIMIENTO");
+        modelo.addColumn("telefono");
+        modelo.addColumn("direccion");
+        modelo.addColumn("categoria");
 
-        List<Estudiante> lista = new ArrayList<>();
+        List<Docente> lista = new ArrayList<>();
         try {
-            IEstudiante estDao = new EstudianteImpl();
-            lista = estDao.obtener();
+            IDocente docDao = new DocenteImpl();
+            lista = docDao.obtener();
         } catch (Exception e) {
 
             JOptionPane.showMessageDialog(this, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
         }
-        for (Estudiante est : lista) {
-            modelo.addRow(new Object[]{est.getCodigo(), est.getCedula(), est.getNombres(), est.getApellidos(), est.getFechaNacimiento().toString()});
+        for (Docente doc : lista) {
+            modelo.addRow(new Object[]{doc.getCodigo(), doc.getCedula(), doc.getNombres(), doc.getApellidos(), doc.getTelefono(), doc.getDireccion(), doc.getCategoria()});
         }
         tabla.setModel(modelo);
     }

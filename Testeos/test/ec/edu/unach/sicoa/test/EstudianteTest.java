@@ -17,16 +17,16 @@ public class EstudianteTest {
         IEstudiante estudianteDao = new EstudianteImpl();
 
 // TEST INSERTAR
-        int filas = 0;
-        Curso nCurso=new Curso(1, "SOCIALES");
-        Estudiante estudent = new Estudiante(1, "060460457-9","gwerfsad","unyawer",new Date(),new Date(),"123235","M","kaubfasd",nCurso);
-        try {
-            filas = estudianteDao.insertar(estudent);
-            System.out.println("Ingreso de " + filas + " Filas Correctas");
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-        assertTrue(filas > 0);
+//        int filas = 0;
+//        Curso nCurso=new Curso(1, "SOCIALES");
+//        Estudiante estudent = new Estudiante(1, "060460457-9","gwerfsad","unyawer",new Date(),new Date(),"123235","M","kaubfasd",nCurso);
+//        try {
+//            filas = estudianteDao.insertar(estudent);
+//            System.out.println("Ingreso de " + filas + " Filas Correctas");
+//        } catch (Exception e) {
+//            System.out.println("Error: " + e.getMessage());
+//        }
+//        assertTrue(filas > 0);
 //
 //            //TEST OBTENER POR CODIGO
 ////        
