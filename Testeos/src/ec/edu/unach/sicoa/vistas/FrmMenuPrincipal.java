@@ -77,6 +77,14 @@ public class FrmMenuPrincipal extends JFrame {
         eliminarEstudiante = new JMenuItem("Eliminar Estudiante");
         buscarEstudiante = new JMenuItem("Buscar Estudiante");
         listEstudiante = new JMenuItem("Listar Estudiantes");
+        listEstudiante.addActionListener( new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                listaEstudianteActionPerformed(e);
+            }
+        });
+        
+        
         menuEstudiante.add(nuevoEstudiante);
         menuEstudiante.add(modificarEstudiante);
         menuEstudiante.add(eliminarEstudiante);
@@ -198,4 +206,11 @@ public class FrmMenuPrincipal extends JFrame {
         escritorio.add(frm);
         frm.setVisible(true);
     }
+     
+     public void listaEstudianteActionPerformed(ActionEvent e) {
+        LISTAESTUDIANTEV frm = new LISTAESTUDIANTEV();
+        escritorio.add(frm);
+        frm.setVisible(true);
+    }
+     
 }
