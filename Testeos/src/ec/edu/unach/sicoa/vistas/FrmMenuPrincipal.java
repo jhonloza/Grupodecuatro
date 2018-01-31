@@ -1,6 +1,5 @@
 package ec.edu.unach.sicoa.vistas;
 
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,8 +8,7 @@ import java.util.*;
 import ec.edu.unach.sicoa.rnegocio.dao.*;
 import ec.edu.unach.sicoa.rnegocio.entidades.*;
 import ec.edu.unach.sicoa.rnegocio.impl.*;
-
-
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 public class FrmMenuPrincipal extends JFrame {
 
@@ -32,14 +30,13 @@ public class FrmMenuPrincipal extends JFrame {
     JMenuItem mniBuscarCurso;
     JMenuItem mniListaCurso;
     JDesktopPane escritorio;
-    
+
     JMenu mniDocente;
     JMenuItem mniNuevoDocente;
     JMenuItem mniModificarDocente;
     JMenuItem mniEliminarDocente;
     JMenuItem mniBuscarDocente;
     JMenuItem mniListaDocente;
-   
 
     JMenu mniMateria;
     JMenuItem mniNuevoMateria;
@@ -50,7 +47,7 @@ public class FrmMenuPrincipal extends JFrame {
 
     public FrmMenuPrincipal() {
         escritorio = new JDesktopPane();
-        escritorio.setBackground(new Color(50, 30, 70));
+//        escritorio.setBackground(new Color(50, 30, 70));
 
         menuBarraPrincipal = new JMenuBar();
         //menu Inicio
@@ -77,14 +74,13 @@ public class FrmMenuPrincipal extends JFrame {
         eliminarEstudiante = new JMenuItem("Eliminar Estudiante");
         buscarEstudiante = new JMenuItem("Buscar Estudiante");
         listEstudiante = new JMenuItem("Listar Estudiantes");
-        listEstudiante.addActionListener( new ActionListener() {
+        listEstudiante.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 listaEstudianteActionPerformed(e);
             }
         });
-        
-        
+
         menuEstudiante.add(nuevoEstudiante);
         menuEstudiante.add(modificarEstudiante);
         menuEstudiante.add(eliminarEstudiante);
@@ -119,8 +115,7 @@ public class FrmMenuPrincipal extends JFrame {
         mniCurso.add(mniBuscarCurso);
         mniCurso.add(mniListaCurso);
         menuBarraPrincipal.add(mniCurso);
-        
-        
+
         mniMateria = new JMenu("MATERIA");
         mniNuevoMateria = new JMenuItem("NUEVO");
         mniNuevoMateria.addActionListener(new ActionListener() {
@@ -141,7 +136,7 @@ public class FrmMenuPrincipal extends JFrame {
         mniMateria.add(mniBuscarMateria);
         mniMateria.add(mniListaMateria);
         menuBarraPrincipal.add(mniMateria);
-        
+
         mniDocente = new JMenu("DOCENTE");
         mniNuevoDocente = new JMenuItem("NUEVO");
         mniNuevoDocente.addActionListener(new ActionListener() {
@@ -161,13 +156,13 @@ public class FrmMenuPrincipal extends JFrame {
         mniDocente.addSeparator();
         mniDocente.add(mniBuscarDocente);
         mniDocente.add(mniListaDocente);
-        mniListaDocente.addActionListener( new ActionListener() {
+        mniListaDocente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 listaDocenteActionPerformed(e);
             }
         });
-        
+
         menuBarraPrincipal.add(mniDocente);
 
         this.setLayout(new BorderLayout());
@@ -176,6 +171,9 @@ public class FrmMenuPrincipal extends JFrame {
         this.add(escritorio, BorderLayout.CENTER);
         this.setExtendedState(MAXIMIZED_BOTH); //PARA MAXIMIZAR LA VENTANA
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//terminar proceso de la ventana ejecutada
+        JFrame.setDefaultLookAndFeelDecorated(true); //que nos permite dejar a Substance la decoracion ( por asi decirlo)
+        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin"); // Setencia que aplica el skin Creme de Substance
+        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceNegatedTheme");
         
 
     }
@@ -201,28 +199,29 @@ public class FrmMenuPrincipal extends JFrame {
         escritorio.add(frm);
         frm.setVisible(true);
     }
-    
-     public void mniNuevoMateriaActionPerformed(ActionEvent e) {
+
+    public void mniNuevoMateriaActionPerformed(ActionEvent e) {
         MATERIAV frm = new MATERIAV();
         escritorio.add(frm);
         frm.setVisible(true);
     }
-     
-     public void mniNuevoDocenteActionPerformed(ActionEvent e) {
+
+    public void mniNuevoDocenteActionPerformed(ActionEvent e) {
         DOCENTESV frm = new DOCENTESV();
         escritorio.add(frm);
         frm.setVisible(true);
     }
-     
-     public void listaEstudianteActionPerformed(ActionEvent e) {
+
+    public void listaEstudianteActionPerformed(ActionEvent e) {
         LISTAESTUDIANTEV frm = new LISTAESTUDIANTEV();
         escritorio.add(frm);
         frm.setVisible(true);
     }
-     public void listaDocenteActionPerformed(ActionEvent e) {
+
+    public void listaDocenteActionPerformed(ActionEvent e) {
         LISTADOCENTEV frm = new LISTADOCENTEV();
         escritorio.add(frm);
         frm.setVisible(true);
     }
-     
+
 }
