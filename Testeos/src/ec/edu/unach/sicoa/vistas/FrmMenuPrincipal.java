@@ -9,7 +9,8 @@ import ec.edu.unach.sicoa.rnegocio.dao.*;
 import ec.edu.unach.sicoa.rnegocio.entidades.*;
 import ec.edu.unach.sicoa.rnegocio.impl.*;
 import org.jvnet.substance.SubstanceLookAndFeel;
-
+import org.jvnet.substance.watermark.SubstanceImageWatermark;
+import org.jvnet.substance.watermark.SubstanceImageWatermark;
 public class FrmMenuPrincipal extends JFrame {
 
     JMenuBar menuBarraPrincipal;
@@ -172,9 +173,10 @@ public class FrmMenuPrincipal extends JFrame {
         this.setExtendedState(MAXIMIZED_BOTH); //PARA MAXIMIZAR LA VENTANA
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);//terminar proceso de la ventana ejecutada
         JFrame.setDefaultLookAndFeelDecorated(true); //que nos permite dejar a Substance la decoracion ( por asi decirlo)
-        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.GreenMagicSkin"); // Setencia que aplica el skin Creme de Substance
-        SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceNegatedTheme");
-        
+        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.RavenGraphiteSkin"); // Setencia que aplica el skin Creme de Substance
+      //  SubstanceLookAndFeel.setCurrentTheme("org.jvnet.substance.theme.SubstanceNegatedTheme");
+        SubstanceLookAndFeel.setCurrentWatermark(new SubstanceImageWatermark ("C:\\Users\\DELL\\Downloads\\FONDOSFORMULARIO\\LDU2.jpg"));
+        SubstanceLookAndFeel.setImageWatermarkOpacity(new Float(0.8));
 
     }
 
